@@ -1,24 +1,24 @@
 
-import HomePage from '../pages/home.vue';
-import CatalogPage from '../pages/catalog.vue';
-import SettingsPage from '../pages/settings.vue';
+import SearchPage from '../pages/search.vue';
+import RandomPage from '../pages/random.vue';
+import FavouritesPage from '../pages/favourites.vue';
 
 
 
 var routes = [
   {
-    path: '/',
-    component: HomePage,
+    path: '/search',
+    component: SearchPage,
   },
   
   {
-    path: '/catalog/',
-    component: CatalogPage,
+    path: '/random/',
+    component: RandomPage,
   },
   
   {
-    path: '/settings/',
-    component: SettingsPage,
+    path: '/favourites/',
+    component: FavouritesPage,
   },
 
   
