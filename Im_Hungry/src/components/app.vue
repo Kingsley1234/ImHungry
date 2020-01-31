@@ -1,10 +1,12 @@
 <template>
 <f7-app :params="f7params" >
+  <!-- app bar which includes the search bar -->
   <f7-appbar>
     <f7-searchbar
         custom-search
       ></f7-searchbar>
   </f7-appbar>
+  
   <f7-views tabs class="safe-areas">
     <!-- Tabbar for switching views-tabs -->
     <f7-toolbar tabbar labels bottom>
@@ -16,16 +18,15 @@
     <!-- Your main view/tab, should have "view-main" class. It also has "tab-active" class -->
     <f7-view id="view-search" main tab tab-active url="/search"></f7-view>
 
-    <!-- Catalog View -->
+    <!-- Random View -->
     <f7-view id="view-random" name="random" tab url="/random/"></f7-view>
 
-    <!-- Settings View -->
+    <!-- Favourites View -->
     <f7-view id="view-favourites" name="favourites" tab url="/favourites/"></f7-view>
 
   </f7-views>
 
 
-  <!-- Popup -->
   
 </f7-app>
 </template>
@@ -46,7 +47,6 @@
           data: function () {
             return {
 
-              // Demo products for Catalog section
              
             };
           },
