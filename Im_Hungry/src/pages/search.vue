@@ -1,5 +1,10 @@
 <template>
   <f7-page name="search">
+  <!-- <f7-appbar> -->
+    <f7-searchbar
+        custom-search
+      ></f7-searchbar>
+  <!-- </f7-appbar> -->
     <!-- Top Navbar -->
     <span v-for="(items, index) in restaurant" :key="index">
       <RestaurantCard :title="items.title"/>
@@ -15,7 +20,6 @@ export default {
   },
   data(){
     return{
-      title: "tims",
       restaurant: [
                 {
                   id: '1',

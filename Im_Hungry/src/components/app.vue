@@ -1,11 +1,7 @@
 <template>
 <f7-app :params="f7params" >
   <!-- app bar which includes the search bar -->
-  <f7-appbar>
-    <f7-searchbar
-        custom-search
-      ></f7-searchbar>
-  </f7-appbar>
+ 
   
   <f7-views tabs class="safe-areas">
     <!-- Tabbar for switching views-tabs -->
