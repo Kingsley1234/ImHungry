@@ -7,7 +7,7 @@
         style="background-image:url(https://cdn.framework7.io/placeholder/nature-1000x600-3.jpg)"
       >Journey To Mountains</f7-card-header>
       <f7-card-content>
-        <p class="date">9-9</p>
+        <p class="date">{{ rating }}</p>
         <p>Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies efficitur vitae non felis. Phasellus quis nibh hendrerit...</p>
       </f7-card-content>
       <f7-card-footer>
@@ -23,7 +23,11 @@ export default {
     props: {
         title: {
             type: String,
-            default: 'Joes'
+            default: ''
+        },
+        rating: {
+          type: String,
+          default: ''
         }
     }
 }
