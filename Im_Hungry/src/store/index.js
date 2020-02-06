@@ -6,8 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        restaurant: [
-        ]
+        restaurant: [],
+        photo: []
     },
     mutations: {
         GET_RESTAURANT(state, keyword) {
@@ -24,11 +24,24 @@ export default new Vuex.Store({
                 state.restaurant = res.data.results
             })
 
+        },
+        GET_PHOTO(state, reference){
+            // var url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400" + "&photoreference=" + reference + "=&key=AIzaSyCcZ-5hQ41xZ3SyZYBeZWERrGVHKgvkzS0"
+            var url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?" +"input="+ reference + "&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyCcZ-5hQ41xZ3SyZYBeZWERrGVHKgvkzS0"
+            const proxyurl = "https://cors-anywhere.herokuapp.com/";
+            axios.get(proxyurl + url).then(res => {
+                console.log(res.data.candidates)
+                state.photo = res.data.candidates
+                
+            })
         }
     },
     actions: {
         getRestaurant({ commit }, keyword) {
             commit('GET_RESTAURANT', keyword)
+        },
+        getPhoto({commit}, reference){
+            commit('GET_PHOTO', reference)
         }
     },
 })  

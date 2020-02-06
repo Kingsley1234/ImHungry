@@ -2,19 +2,19 @@
   <div>
    <f7-card class="card">
   <f7-card-header
-    class="no-border"
+    class="title"
     valign="bottom"
-    style="background-image:url(https://cdn.framework7.io/placeholder/nature-1000x600-3.jpg)"
-  >Journey To Mountains</f7-card-header>
+  >{{title}}</f7-card-header>
   <f7-card-content>
-    <p v-if="isOpen" class="isOpen">Open now</p>
+    <div class="demo-facebook-avatar"><img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CmRaAAAA8k2dEkX7A15tvHp0AHLIOsDCKk7-MxcYJ3AjT45KMSZ3fXLtg50anLo94d47lH0VVKcrHZOPaS9wOxLNoEmECtASavpZ7FCv0FfmvqD8oD7ZYhFeyX0O-yDv8nTHo5bBEhBMbkCeiAmYZpapajBktdWCGhS1P_N7RU2as5T-C0wTCkSGGLMRjA&key=AIzaSyCcZ-5hQ41xZ3SyZYBeZWERrGVHKgvkzS0" width="340" height="340"/></div>
+    <p v-if="isOpen.open_now" class="isOpen">Open now</p>
     <p v-else class="isNotOpen">Closed now</p>
     <p><b> {{address}}</b></p>
-    <p>Rating: <v-rating v-model="rating"></v-rating></p>
+    <p class="rating">Rating: {{rating}}</p>
   </f7-card-content>
   <f7-card-footer>
     <f7-link>Like</f7-link>
-    <f7-link>View more info</f7-link>
+    <f7-link @click="getPhoto">View more info</f7-link>
   </f7-card-footer>
 </f7-card>
   </div>
@@ -22,11 +22,16 @@
 
 <script>
 export default {
-  data(){
-    return{
-      rating: 5
-    }
-  },
+    computed: {
+      sourceImage(){
+        this.$store.state.photo
+      }
+    },
+    methods: {
+      getPhoto(){
+      this.$store.dispatch('getPhoto', this.title)
+      }
+    },
     props: {
         title: {
             type: String,
@@ -62,6 +67,13 @@ export default {
 }
 .isNotOpen {
   color: #cc0000;
+}
+.rating {
+  color: #ff9933
+}
+.title {
+  font-size: 16pt;
+  font-weight: bold
 }
 </style>
 
