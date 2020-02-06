@@ -9,7 +9,7 @@
       ></f7-searchbar>
     <!-- Top Navbar -->
     <span v-for="(items, index) in restaurant" :key="index">
-      <RestaurantCard :title="items.name" :rating="rating"/>
+      <RestaurantCard :title="items.name" :rating="items.rating"/>
     </span>
   </f7-page>
 </template>
