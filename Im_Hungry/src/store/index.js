@@ -8,6 +8,7 @@ export default new Vuex.Store({
     state: {
         restaurant: [],
         location: localStorage.getItem('location') || null,
+        radius: localStorage.getItem('radius') || 1,
         photo: [],
         reference: "",
         currentRestaurant: {
@@ -24,8 +25,8 @@ export default new Vuex.Store({
             state.keyword = keyword
             var key = 'AIzaSyCcZ-5hQ41xZ3SyZYBeZWERrGVHKgvkzS0'
             
-            // var location = '45.08333, -64.36667'
-            var radius = 16000;
+           
+            var radius = state.radius * 1000;
             var sensor = false;
             var types = "restaurant";
             const proxyurl = "https://cors-anywhere.herokuapp.com/";
@@ -61,6 +62,40 @@ export default new Vuex.Store({
         GET_LOCATION(state, location){
             state.location = location
             localStorage.setItem('location', location)
+        },
+        CHANGE_RADIUS(state, distance){
+            state.radius = distance
+            localStorage.setItem('radius', distance)
+        },
+        CHANGE_PROVINCE(state, province){
+            state.location = province
+            if(state.location === "Alberta"){
+                state.location = "51.0447,-114.0719"
+            }
+            else if(state.location === "British Columbia"){
+                state.location = "53.7267, -127.6476"
+            }
+            else if(state.location === "Ontario"){
+                state.location = "53.2538, -85.3232"
+            }
+            else if(state.location === "Quebec"){
+                state.location = "52.9399,-75.5491"
+            }
+            else if(state.location === "Manitoba"){
+                state.location = "53.7609, -98.8139"
+            }
+            else if(state.location === "Saskatchewan"){
+                state.location = "52.9399, -106.4509"
+            }
+            else if(state.location === "Newfoundland"){
+                state.location = "53.1355, -57.6604"
+            }
+            else if(state.location === "PEI"){
+                state.location = "46.5107, -63.4168"
+            }
+            else if(state.location === "New Brunswick"){
+                state.location = "46.5653, -66.4619"
+            }
         }
     },
     actions: {
@@ -75,6 +110,13 @@ export default new Vuex.Store({
         },
         getLocation({commit}, location){
             commit('GET_LOCATION', location)
+        },
+        changeRadius({commit}, distance){
+            commit('CHANGE_RADIUS', distance)
+        },
+        changeProvince({commit}, province){
+            commit('CHANGE_PROVINCE', province)
         }
+
     },
 })  

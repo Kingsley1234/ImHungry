@@ -30,10 +30,10 @@
       </f7-toolbar>
 
       <!-- Your main view/tab, should have "view-main" class. It also has "tab-active" class -->
-      <f7-view id="view-search" main tab tab-active url="/search"></f7-view>
+      <f7-view id="view-search" main tab tab-active  url="/search"></f7-view>
 
       <!-- Random View -->
-      <f7-view id="view-random" name="random" tab url="/random/"></f7-view>
+      <f7-view id="view-random" name="random"   tab url="/random/"></f7-view>
 
       <!-- Favourites View -->
       <f7-view id="view-favourites" name="favourites" tab url="/favourites/"></f7-view>
