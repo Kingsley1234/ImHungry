@@ -6,14 +6,23 @@
     valign="bottom"
   >{{title}}</f7-card-header>
   <f7-card-content>
-        <div class="demo-facebook-avatar"><img :src="imageUrl" width="340" height="340"/></div>
+        <div class=""><img :src="imageUrl" width="300" height="300"/></div>
     <p v-if="isOpen.open_now" class="isOpen">Open now</p>
     <p v-else class="isNotOpen">Closed now</p>
     <p><b> {{address}}</b></p>
     <p class="rating">Rating: {{rating}}</p>
   </f7-card-content>
   <f7-card-footer>
-    <f7-link>Like</f7-link>
+    <f7-link v-if="isLiked" @click="addToFavourites"
+        icon-ios="f7:star_fill"
+        icon-aurora="f7:star_fill"
+        icon-md="f7:star_fill"
+      ></f7-link>
+      <f7-link v-else @click="addToFavourites"
+        icon-ios="f7:star"
+        icon-aurora="f7:star"
+        icon-md="f7:star"
+      ></f7-link>
   </f7-card-footer>
 </f7-card>
   </div>
@@ -22,6 +31,10 @@
 
 <script>
 export default {
+  data(){
+    return{
+    }
+  },
     computed: {
       sourceImage(){
         this.$store.state.photo
@@ -30,6 +43,10 @@ export default {
     methods: {
       getPhoto(){
       this.$store.dispatch('getPhoto', this.title)
+      },
+      addToFavourites(){
+      this.$store.dispatch('like')
+        
       }
     },
     props: {
@@ -43,6 +60,10 @@ export default {
         },
         imageUrl: {
           type: String,
+        },
+        isLiked: {
+          type: Boolean,
+          default: false
         },
         isOpen: {
           type: Boolean,

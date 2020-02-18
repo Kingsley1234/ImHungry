@@ -13,7 +13,6 @@
     <p class="numberRating">Number of Ratings: {{numberOfRating}}</p>
   </f7-card-content>
   <f7-card-footer>
-    <f7-link>Like</f7-link>
     <f7-link @click="getPhoto" popup-open="#infoCard">View more info</f7-link>
   </f7-card-footer>
 </f7-card>
@@ -37,7 +36,8 @@ export default {
         image: this.image,
         isOpen: this.isOpen,
         numberOfRating: this.numberOfRating,
-        address: this.address
+        address: this.address,
+        isLiked: this.isLiked
       })
       }
     },
@@ -46,6 +46,7 @@ export default {
             type: String,
             default: ''
         },
+        
         rating: {
           type: String,
           default: ''

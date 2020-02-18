@@ -25,6 +25,7 @@
             </f7-nav-right>
           </f7-navbar>
           <bigRestaurantCard
+            :isLiked="currentRestaurant.isLiked"
             :isOpen="currentRestaurant.isOpen"
             :rating="currentRestaurant.rating"
             :address="currentRestaurant.address"
@@ -40,7 +41,7 @@
 
 <script>
 import RestaurantCard from "./restaurantCard";
-import bigRestaurantCard from "./restaurantCard";
+import bigRestaurantCard from "./bigRestaurantCard";
 export default {
   components: {
     RestaurantCard,

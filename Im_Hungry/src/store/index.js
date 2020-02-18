@@ -11,13 +11,15 @@ export default new Vuex.Store({
         radius: localStorage.getItem('radius') || 1,
         photo: [],
         reference: "",
+        favourites: [localStorage.getItem('favourites')],
         currentRestaurant: {
             name: "",
             isOpen: null,
             rating: "",
             image: "",
             numberOfRating: "",
-            address: ""
+            address: "",
+            isLiked: false
         },
     },
     mutations: {
@@ -58,6 +60,7 @@ export default new Vuex.Store({
             state.currentRestaurant.numberOfRating = info.numberOfRating
             state.currentRestaurant.address = info.address
             state.currentRestaurant.image = url 
+            state.currentRestaurant.isLiked = info.isLiked
         },
         GET_LOCATION(state, location){
             state.location = location
@@ -96,6 +99,11 @@ export default new Vuex.Store({
             else if(state.location === "New Brunswick"){
                 state.location = "46.5653, -66.4619"
             }
+        },
+        LIKE(state){
+            state.currentRestaurant.isLiked = !state.currentRestaurant.isLiked
+            state.favourites.push(state.currentRestaurant)
+            localStorage.setItem('favourites',state.favourites)
         }
     },
     actions: {
@@ -116,6 +124,9 @@ export default new Vuex.Store({
         },
         changeProvince({commit}, province){
             commit('CHANGE_PROVINCE', province)
+        },
+        like({commit}){
+            commit("LIKE")
         }
 
     },
