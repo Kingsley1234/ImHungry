@@ -1,81 +1,111 @@
 <template>
-<f7-app :params="f7params" >
-  <!-- app bar which includes the search bar -->
- 
-  
-  <f7-views tabs class="safe-areas">
-    <!-- Tabbar for switching views-tabs -->
-    <f7-toolbar tabbar labels bottom>
-      <f7-link tab-link="#view-search" tab-link-active icon-ios="f7:search" icon-aurora="f7:search" icon-md="material:magnify" text="Search"></f7-link>
-      <f7-link tab-link="#view-random" icon-ios="f7:arrow_2_circlepath_circle_fill" icon-aurora="f7:arrow_2_circlepath_circle_fill" icon-md="material:view_list" text="Random"></f7-link>
-      <f7-link tab-link="#view-favourites" icon-ios="f7:star_fill" icon-aurora="f7:star_fill" icon-md="material:settings" text="Favourites"></f7-link>
-    </f7-toolbar>
+  <f7-app :params="f7params">
+    <!-- app bar which includes the search bar -->
 
-    <!-- Your main view/tab, should have "view-main" class. It also has "tab-active" class -->
-    <f7-view id="view-search" main tab tab-active url="/search"></f7-view>
+    <f7-views tabs class="safe-areas">
+      <!-- Tabbar for switching views-tabs -->
+      <f7-toolbar tabbar labels bottom>
+        <f7-link
+          tab-link="#view-search"
+          tab-link-active
+          icon-ios="f7:search"
+          icon-aurora="f7:search"
+          icon-md="material:magnify"
+          text="Search"
+        ></f7-link>
+        <f7-link
+          tab-link="#view-random"
+          icon-ios="f7:arrow_2_circlepath_circle_fill"
+          icon-aurora="f7:arrow_2_circlepath_circle_fill"
+          icon-md="material:view_list"
+          text="Random"
+        ></f7-link>
+        <f7-link
+          tab-link="#view-favourites"
+          icon-ios="f7:star_fill"
+          icon-aurora="f7:star_fill"
+          icon-md="material:settings"
+          text="Favourites"
+        ></f7-link>
+      </f7-toolbar>
 
-    <!-- Random View -->
-    <f7-view id="view-random" name="random" tab url="/random/"></f7-view>
+      <!-- Your main view/tab, should have "view-main" class. It also has "tab-active" class -->
+      <f7-view id="view-search" main tab tab-active url="/search"></f7-view>
 
-    <!-- Favourites View -->
-    <f7-view id="view-favourites" name="favourites" tab url="/favourites/"></f7-view>
+      <!-- Random View -->
+      <f7-view id="view-random" name="random" tab url="/random/"></f7-view>
 
-  </f7-views>
-
-
-  
-</f7-app>
+      <!-- Favourites View -->
+      <f7-view id="view-favourites" name="favourites" tab url="/favourites/"></f7-view>
+    </f7-views>
+  </f7-app>
 </template>
 <script>
-  import { Device }  from 'framework7/framework7-lite.esm.bundle.js';
-  import cordovaApp from '../js/cordova-app.js';
-  import routes from '../js/routes.js';
+import { Device } from "framework7/framework7-lite.esm.bundle.js";
+import cordovaApp from "../js/cordova-app.js";
+import routes from "../js/routes.js";
 
-  export default {
-    data() {
-      return {
-        // Framework7 Parameters
-        f7params: {
-          id: 'io.framework7.myapp', // App bundle ID
-          name: 'ImHungry', // App name
-          theme: 'auto', // Automatic theme detection
-          // App root data
-          data: function () {
-            return {
-
-             
-            };
-          },
-
-          // App routes
-          routes: routes,
-
-
-          // Input settings
-          input: {
-            scrollIntoViewOnFocus: Device.cordova && !Device.electron,
-            scrollIntoViewCentered: Device.cordova && !Device.electron,
-          },
-          // Cordova Statusbar settings
-          statusbar: {
-            iosOverlaysWebView: true,
-            androidOverlaysWebView: false,
-          },
+export default {
+  data() {
+    return {
+      // Framework7 Parameters
+      f7params: {
+        id: "io.framework7.myapp", // App bundle ID
+        name: "ImHungry", // App name
+        theme: "auto", // Automatic theme detection
+        // App root data
+        data: function() {
+          return {};
         },
 
+        // App routes
+        routes: routes,
+
+        // Input settings
+        input: {
+          scrollIntoViewOnFocus: Device.cordova && !Device.electron,
+          scrollIntoViewCentered: Device.cordova && !Device.electron
+        },
+        // Cordova Statusbar settings
+        statusbar: {
+          iosOverlaysWebView: true,
+          androidOverlaysWebView: false
+        }
+      }
+    };
+  },
+  methods: {
+    getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          this.geoSuccess,
+          this.geoError
+        );
+      } else {
       }
     },
-    methods: {
-      
+    geoSuccess(position) {
+      var lat = position.coords.latitude;
+      var lng = position.coords.longitude;
+      var location = lat + "," + lng
+      console.log(location)
+      this.$store.dispatch('getLocation', location)
     },
-    mounted() {
-      this.$f7ready((f7) => {
-        // Init cordova APIs (see cordova-app.js)
-        if (Device.cordova) {
-          cordovaApp.init(f7);
-        }
-        // Call F7 APIs here
-      });
+    geoError() {
+      console.log("Geocoder failed.");
     }
+  },
+  created() {
+    this.getLocation();
+  },
+  mounted() {
+    this.$f7ready(f7 => {
+      // Init cordova APIs (see cordova-app.js)
+      if (Device.cordova) {
+        cordovaApp.init(f7);
+      }
+      // Call F7 APIs here
+    });
   }
+};
 </script>

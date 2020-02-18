@@ -20,14 +20,13 @@
   <f7-popup id="my-popup">
     <f7-view>
       <f7-page>
-        <f7-navbar title="Your Pick!">
+        <f7-navbar :title="name">
           <f7-nav-right>
             <f7-link popup-close>Close</f7-link>
           </f7-nav-right>
         </f7-navbar>
         <f7-block>
-          <p>{{ this.randomNum}}</p>
-          <RestaurantCard :title="name"/>
+          <RestaurantCard  :rating="ratings" :isOpen="isOpen"/>
         </f7-block>
       </f7-page>
     </f7-view>
@@ -54,7 +53,6 @@
               </f7-list-item-cell>
               <f7-list-item-cell class="width-auto flex-shrink-0">
                 <!--<f7-icon ios="f7:speaker_3_fill" aurora="f7:speaker_3_fill" md="material:volume_up"></f7-icon>-->
-                <p>100</p>
               </f7-list-item-cell>
             </f7-list-item>
           </f7-list>
@@ -63,14 +61,7 @@
     </f7-view>
   </f7-panel>
 
-   <!--  <f7-list>
-      <f7-list-item
-        v-for="(product) in products"
-        :key="product.id"
-        :title="product.title"
-        :link="`/product/${product.id}/`"
-      ></f7-list-item> 
-    </f7-list>-->
+  
   </f7-page>
 </template>
 
@@ -82,7 +73,10 @@ import RestaurantCard from './restaurantCard';
 			return{
 				keyword: 'food',
 				randomNum: '',
-				name: ''
+        name: '',
+        ratings: '',
+        isOpen: null,
+        noOfRatings: ''
 			}
 		},
 		components:{
@@ -97,6 +91,9 @@ import RestaurantCard from './restaurantCard';
 				this.randomNum = Math.floor(Math.random() * length);
 				console.log(this.restaurant[this.randomNum].name)
 				this.name = this.restaurant[this.randomNum].name
+				this.ratings = this.restaurant[this.randomNum].rating
+				this.isOpen = this.restaurant[this.randomNum].opening_hours
+				this.noOfRatings = this.restaurant[this.randomNum].user_ratings_total
 				//this.initialize();
 				
 			},
