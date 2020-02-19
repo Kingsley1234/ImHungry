@@ -6,14 +6,15 @@
     valign="bottom"
   >{{title}}</f7-card-header>
   <f7-card-content>
-        <div class=""><img :src="imageUrl" width="300" height="300"/></div>
+        <div v-if="showImage" class=""><img :src="imageUrl" width="300" height="300"/></div>
     <p v-if="isOpen.open_now" class="isOpen">Open now</p>
     <p v-else class="isNotOpen">Closed now</p>
     <p><b> {{address}}</b></p>
     <p class="rating">Rating: {{rating}}</p>
+    <p class="numberRating">Number of Ratings: {{numberOfRating}}</p>
   </f7-card-content>
   <f7-card-footer>
-    <f7-link v-if="isLiked" @click="addToFavourites"
+    <f7-link v-if="isLiked" @click="removeFromFavourites"
         icon-ios="f7:star_fill"
         icon-aurora="f7:star_fill"
         icon-md="f7:star_fill"
@@ -46,7 +47,11 @@ export default {
       },
       addToFavourites(){
       this.$store.dispatch('like')
-        
+      },
+      removeFromFavourites(){
+      this.$store.dispatch('dislike', this.index) 
+       this.$f7.views.main.router.back();
+
       }
     },
     props: {
@@ -55,7 +60,7 @@ export default {
             default: ''
         },
         rating: {
-          type: String,
+          type: Number,
           default: ''
         },
         imageUrl: {
@@ -65,12 +70,19 @@ export default {
           type: Boolean,
           default: false
         },
+        index: {
+          type: Number,
+        },
+         showImage: {
+          type: Boolean,
+          default: true
+        },
         isOpen: {
           type: Boolean,
           default: false
         },
         numberOfRating: {
-          type: String,
+          type: Number,
           default: ''
         },
         address: {

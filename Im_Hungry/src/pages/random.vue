@@ -31,7 +31,8 @@
             </f7-nav-right>
           </f7-navbar>
           <f7-block>
-            <RestaurantCard :rating="ratings" :isOpen="isOpen" />
+            <RestaurantCard :rating="ratings" :isOpen="isOpen" :numberOfRating="noOfRatings"
+ />
           </f7-block>
         </f7-page>
       </f7-view>
@@ -80,7 +81,7 @@
                 </f7-list-item-cell>
               </f7-list-item>
             </f7-list>
-            
+
             </f7-list>
           </f7-block>
         </f7-page>

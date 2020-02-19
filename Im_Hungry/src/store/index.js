@@ -9,9 +9,9 @@ export default new Vuex.Store({
         restaurant: [],
         location: localStorage.getItem('location') || null,
         radius: localStorage.getItem('radius') || 1,
+        fav: JSON.parse(localStorage.getItem('favourites')),
         photo: [],
         reference: "",
-        favourites: [localStorage.getItem('favourites')],
         currentRestaurant: {
             name: "",
             isOpen: null,
@@ -22,19 +22,22 @@ export default new Vuex.Store({
             isLiked: false
         },
     },
+    getters:{
+        favouritesArray: ()=>  {
+            return JSON.parse(localStorage.getItem('favourites'))
+        }
+    },
     mutations: {
         GET_RESTAURANT(state, keyword) {
             state.keyword = keyword
             var key = 'AIzaSyCcZ-5hQ41xZ3SyZYBeZWERrGVHKgvkzS0'
-            
-           
             var radius = state.radius * 1000;
             var sensor = false;
             var types = "restaurant";
-            const proxyurl = "https://cors-anywhere.herokuapp.com/";
+            // const proxyurl = "https://cors-anywhere.herokuapp.com/";
             var url2 = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" + "key=" + key + "&location=" + state.location + "&radius=" + radius + "&sensor=" + sensor + "&types=" + types + "&keyword=" + keyword;
 
-            axios.get(proxyurl + url2).then(res => {
+            axios.get( url2).then(res => {
                 console.log(res.data)
                 state.restaurant = res.data.results
             })
@@ -43,8 +46,8 @@ export default new Vuex.Store({
         GET_PHOTO(state, keyword){
             // var url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400" + "&photoreference=" + reference + "=&key=AIzaSyCcZ-5hQ41xZ3SyZYBeZWERrGVHKgvkzS0"
             var url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?" +"input="+ keyword + "&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyCcZ-5hQ41xZ3SyZYBeZWERrGVHKgvkzS0"
-            const proxyurl = "https://cors-anywhere.herokuapp.com/";
-            axios.get(proxyurl + url).then(res => {
+            // const proxyurl = "https://cors-anywhere.herokuapp.com/";
+            axios.get( url).then(res => {
                 console.log(res.data.candidates)
                 state.photo = res.data.candidates
                 state.reference = state.photo[0].photos[0].photo_reference
@@ -101,9 +104,26 @@ export default new Vuex.Store({
             }
         },
         LIKE(state){
+            var favourites = []
             state.currentRestaurant.isLiked = !state.currentRestaurant.isLiked
-            state.favourites.push(state.currentRestaurant)
-            localStorage.setItem('favourites',state.favourites)
+            favourites = JSON.parse(localStorage.getItem('favourites')) || []
+            if(state.currentRestaurant.name === ""){
+                console.log("")
+            }
+            else{
+                favourites.push(state.currentRestaurant)
+                localStorage.setItem('favourites', JSON.stringify(favourites))
+                state.fav = favourites
+
+
+            }
+        },
+        DISLIKE(state, index){
+            var favourites = []
+            favourites = JSON.parse(localStorage.getItem('favourites')) || []
+            favourites.splice(index, 1)
+            localStorage.setItem('favourites', JSON.stringify(favourites))
+            state.fav = favourites
         }
     },
     actions: {
@@ -127,6 +147,9 @@ export default new Vuex.Store({
         },
         like({commit}){
             commit("LIKE")
+        },
+        dislike({commit}, index){
+            commit("DISLIKE", index)
         }
 
     },
