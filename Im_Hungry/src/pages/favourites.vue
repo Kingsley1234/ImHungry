@@ -1,6 +1,6 @@
 <template>
   <f7-page name="favorites">
-    <h1>Favourites</h1>
+        <f7-navbar title="Favourites"></f7-navbar>
     <span v-for="(items, index) in favourites" :key="index">
       <span v-if="items.name">
         <RestaurantCard
