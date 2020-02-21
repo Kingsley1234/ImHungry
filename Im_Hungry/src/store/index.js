@@ -34,9 +34,10 @@ export default new Vuex.Store({
             var key = 'AIzaSyCcZ-5hQ41xZ3SyZYBeZWERrGVHKgvkzS0'
             var radius = state.radius * 1000;
             var sensor = false;
+            var location = "45.0900293,-64.3738434"
             var types = "restaurant";
             const proxyurl = "https://cors-anywhere.herokuapp.com/";
-            var url2 = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" + "key=" + key + "&location=" + state.location + "&radius=" + radius + "&sensor=" + sensor + "&types=" + types + "&keyword=" + keyword;
+            var url2 = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" + "key=" + key + "&location=" + location + "&radius=" + radius + "&sensor=" + sensor + "&types=" + types + "&keyword=" + keyword;
 
             axios.get(proxyurl + url2).then(res => {
                 if (state.open) {
