@@ -28,6 +28,7 @@
 
     <platform name="android">
       <preference name="StatusBarOverlaysWebView" value="false" />
+      <preference name="AutoHideSplashScreen" value="true" />
       <preference name="android-minSdkVersion" value="21" />
       <preference name="SplashMaintainAspectRatio" value="true" />
       <splash density="land-hdpi" src="res/screen/android/drawable-hdpi/screen.png" />
