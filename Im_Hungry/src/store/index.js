@@ -35,10 +35,10 @@ export default new Vuex.Store({
             var radius = state.radius * 1000;
             var sensor = false;
             var types = "restaurant";
-            // const proxyurl = "https://cors-anywhere.herokuapp.com/";
+            const proxyurl = "https://cors-anywhere.herokuapp.com/";
             var url2 = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" + "key=" + key + "&location=" + state.location + "&radius=" + radius + "&sensor=" + sensor + "&types=" + types + "&keyword=" + keyword;
 
-            axios.get(url2).then(res => {
+            axios.get(proxyurl + url2).then(res => {
                 if (state.open) {
                     var rest = []
                     rest = res.data.results
@@ -59,8 +59,8 @@ export default new Vuex.Store({
         GET_PHOTO(state, keyword) {
             // var url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400" + "&photoreference=" + reference + "=&key=AIzaSyCcZ-5hQ41xZ3SyZYBeZWERrGVHKgvkzS0"
             var url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?" + "input=" + keyword + "&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyCcZ-5hQ41xZ3SyZYBeZWERrGVHKgvkzS0"
-            // const proxyurl = "https://cors-anywhere.herokuapp.com/";
-            axios.get(url).then(res => {
+            const proxyurl = "https://cors-anywhere.herokuapp.com/";
+            axios.get(proxyurl + url).then(res => {
                 console.log(res.data.candidates)
                 state.photo = res.data.candidates
                 state.reference = state.photo[0].photos[0].photo_reference
