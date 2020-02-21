@@ -30,6 +30,8 @@ export default {
     },
     methods: {
       getPhoto(){
+      this.$store.dispatch('getPhoto', "food")
+
       this.$store.dispatch('currentCard', {
         title: this.title,
         rating: this.rating,

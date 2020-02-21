@@ -9,7 +9,7 @@
           :isLiked="items.isLiked"
           :title="items.name"
           :rating="items.rating"
-          :isOpen="items.isOpen.open_now"
+          :isOpen="items.isOpen"
           :address="items.address"
           :numberOfRating="items.numberOfRating"
         />

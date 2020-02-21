@@ -10,21 +10,22 @@
           tab-link-active
           icon-ios="f7:search"
           icon-aurora="f7:search"
-          icon-md="material:magnify"
+          icon-md="f7:search"
           text="Search"
         ></f7-link>
         <f7-link
           tab-link="#view-random"
           icon-ios="f7:arrow_2_circlepath_circle_fill"
           icon-aurora="f7:arrow_2_circlepath_circle_fill"
-          icon-md="material:view_list"
+          icon-md="f7:arrow_2_circlepath_circle_fill"
+
           text="Random"
         ></f7-link>
         <f7-link
           tab-link="#view-favourites"
           icon-ios="f7:star_fill"
-          icon-aurora="f7:star_fill"
-          icon-md="material:settings"
+        icon-aurora="f7:star_fill"
+        icon-md="f7:star_fill"
           text="Favourites"
         ></f7-link>
       </f7-toolbar>
