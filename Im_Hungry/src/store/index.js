@@ -12,7 +12,7 @@ export default new Vuex.Store({
         fav: JSON.parse(localStorage.getItem('favourites')),
         photo: [],
         reference: "",
-        open: localStorage.getItem('open') || false,
+        open: false,
         currentRestaurant: {
             name: "",
             isOpen: null,
