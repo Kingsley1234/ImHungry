@@ -81,7 +81,7 @@
                 </f7-list-item>
               </f7-list>
               <f7-list>
-                <f7-list-item @change="openNow"  checkbox title="Open now" name="Open now"></f7-list-item>
+                <f7-list-item @change="openNow" checked checkbox title="Open now" name="Open now"></f7-list-item>
               </f7-list>
             </f7-list>
           </f7-block>
@@ -114,12 +114,16 @@ export default {
   methods: {
     openNow(e){
       if(e.target.checked){
-        this.open = true
-        this.$store.dispatch('changeOpen')
+        this.$store.dispatch('changeOpen').then( ()=> {
+          this.$store.dispatch("getRestaurant", "food");
+        }
+        )
       }
       else{
-        this.open = false
-        this.$store.dispatch('changeOpen')
+        this.$store.dispatch('changeOpen').then(()=> {
+          this.$store.dispatch("getRestaurant", "food");
+
+        })
 
       }
     },

@@ -12,7 +12,7 @@ export default new Vuex.Store({
         fav: JSON.parse(localStorage.getItem('favourites')),
         photo: [],
         reference: "",
-        open: false,
+        open:  true,
         currentRestaurant: {
             name: "",
             isOpen: null,
@@ -29,7 +29,15 @@ export default new Vuex.Store({
         }
     },
     mutations: {
+        isEmpty(obj) {
+            for(var prop in obj) {
+                if(obj.hasOwnProperty(prop)) return false;
+            }
+            return true;
+        },
+        
         GET_RESTAURANT(state, keyword) {
+            state.restaurant = []
             state.keyword = keyword
             var key = 'AIzaSyCcZ-5hQ41xZ3SyZYBeZWERrGVHKgvkzS0'
             var radius = state.radius * 1000;
@@ -44,8 +52,12 @@ export default new Vuex.Store({
                     var rest = []
                     rest = res.data.results
                     for(var i = 0; i<rest.length; i++){
-                        if(rest[i].opening_hours.open_now){
-                            state.restaurant.push(rest[i])
+                        if(rest[i].opening_hours.length === 0)
+                        {
+                            console.log("empty")
+                        }
+                        else if(rest[i].opening_hours.open_now === true){
+                            state.restaurant.push(rest[i])   
                         }
                     }
                 }
@@ -90,7 +102,7 @@ export default new Vuex.Store({
         CHANGE_PROVINCE(state, province) {
             state.location = province
             if (state.location === "Alberta") {
-                state.location = "51.0447,-114.0719"
+                state.location = "51.0447,-1140719"
             }
             else if (state.location === "British Columbia") {
                 state.location = "53.7267, -127.6476"
