@@ -144,6 +144,15 @@ export default {
       this.isOpen = this.restaurant[this.randomNum].opening_hours;
       this.noOfRatings = this.restaurant[this.randomNum].user_ratings_total;
       this.address = this.restaurant[this.randomNum].vicinity
+        this.$store.dispatch('currentCard', {
+        title: this.name,
+        rating: this.ratings,
+        image: this.image,
+        isOpen: this.isOpen,
+        numberOfRating: this.noOfRatings,
+        address: this.address,
+        isLiked: this.isLiked
+      })
     },
     onDistanceChange(value) {
       this.distance = value;

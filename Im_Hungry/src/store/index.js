@@ -7,7 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         restaurant: [],
-        location: localStorage.getItem('location') || null,
+        location: localStorage.getItem('location') || "45.0900293,-64.3738434",
         radius: localStorage.getItem('radius') || 1,
         fav: JSON.parse(localStorage.getItem('favourites')),
         photo: [],
