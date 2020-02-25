@@ -12,7 +12,7 @@ export default new Vuex.Store({
         fav: JSON.parse(localStorage.getItem('favourites')),
         photo: [],
         reference: "",
-        open:  true,
+        open: true,
         currentRestaurant: {
             name: "",
             isOpen: null,
@@ -29,35 +29,26 @@ export default new Vuex.Store({
         }
     },
     mutations: {
-        isEmpty(obj) {
-            for(var prop in obj) {
-                if(obj.hasOwnProperty(prop)) return false;
-            }
-            return true;
-        },
-        
         GET_RESTAURANT(state, keyword) {
-            state.restaurant = []
             state.keyword = keyword
+            state.restaurant = []
             var key = 'AIzaSyCcZ-5hQ41xZ3SyZYBeZWERrGVHKgvkzS0'
             var radius = state.radius * 1000;
             var sensor = false;
-            var location = "45.0900293,-64.3738434"
             var types = "restaurant";
             const proxyurl = "https://cors-anywhere.herokuapp.com/";
-            var url2 = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" + "key=" + key + "&location=" + location + "&radius=" + radius + "&sensor=" + sensor + "&types=" + types + "&keyword=" + keyword;
+            var url2 = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" + "key=" + key + "&location=" + state.location + "&radius=" + radius + "&sensor=" + sensor + "&types=" + types + "&keyword=" + keyword;
 
             axios.get(proxyurl + url2).then(res => {
                 if (state.open) {
                     var rest = []
                     rest = res.data.results
-                    for(var i = 0; i<rest.length; i++){
-                        if(rest[i].opening_hours.length === 0)
-                        {
+                    for (var i = 0; i < rest.length; i++) {
+                        if (rest[i].opening_hours.length === 0) {
                             console.log("empty")
                         }
-                        else if(rest[i].opening_hours.open_now === true){
-                            state.restaurant.push(rest[i])   
+                        else if (rest[i].opening_hours.open_now === true) {
+                            state.restaurant.push(rest[i])
                         }
                     }
                 }
@@ -102,31 +93,35 @@ export default new Vuex.Store({
         CHANGE_PROVINCE(state, province) {
             state.location = province
             if (state.location === "Alberta") {
-                state.location = "51.0447,-1140719"
+                state.location = "51.0478,	-114.0593"
+            }
+            else if (state.location === "Nova Scotia") {
+                state.location = "45.0900293,-64.3738434"
+
             }
             else if (state.location === "British Columbia") {
-                state.location = "53.7267, -127.6476"
+                state.location = "49.2827	-123.1171"
             }
             else if (state.location === "Ontario") {
-                state.location = "53.2538, -85.3232"
+                state.location = "43.6548,-79.3883"
             }
             else if (state.location === "Quebec") {
-                state.location = "52.9399,-75.5491"
+                state.location = "46.8139, -71.2080"
             }
             else if (state.location === "Manitoba") {
-                state.location = "53.7609, -98.8139"
+                state.location = "49.8943,	-97.1388"
             }
             else if (state.location === "Saskatchewan") {
-                state.location = "52.9399, -106.4509"
+                state.location = "50.4499, -104.6112"
             }
             else if (state.location === "Newfoundland") {
-                state.location = "53.1355, -57.6604"
+                state.location = "47.5641, -52.7087"
             }
             else if (state.location === "PEI") {
-                state.location = "46.5107, -63.4168"
+                state.location = "46.250000, -63.000000"
             }
             else if (state.location === "New Brunswick") {
-                state.location = "46.5653, -66.4619"
+                state.location = "	40.4964,	-74.4457"
             }
         },
         LIKE(state) {
@@ -151,7 +146,8 @@ export default new Vuex.Store({
             localStorage.setItem('favourites', JSON.stringify(favourites))
             state.fav = favourites
         },
-        CHANGE_OPEN(state){
+        CHANGE_OPEN(state) {
+            state.restaurant = []
             state.open = !state.open
             localStorage.setItem('open', state.open)
         }
@@ -181,7 +177,7 @@ export default new Vuex.Store({
         dislike({ commit }, index) {
             commit("DISLIKE", index)
         },
-        changeOpen({commit}){
+        changeOpen({ commit }) {
             commit("CHANGE_OPEN")
         }
 

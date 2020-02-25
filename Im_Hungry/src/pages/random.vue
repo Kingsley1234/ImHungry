@@ -31,7 +31,7 @@
             </f7-nav-right>
           </f7-navbar>
           <f7-block>
-            <RestaurantCard :title="name" :rating="ratings" :isOpen="isOpen" :numberOfRating="noOfRatings" />
+            <RestaurantCard :title="name" :rating="ratings" :isOpen="isOpen" :numberOfRating="noOfRatings" :address="address" />
           </f7-block>
         </f7-page>
       </f7-view>
@@ -93,7 +93,7 @@
 
 
 <script>
-import RestaurantCard from "./restaurantCard";
+import RestaurantCard from "./BigRestaurantCard";
 export default {
   data() {
     return {
@@ -103,6 +103,7 @@ export default {
       ratings: "",
       isOpen: null,
       noOfRatings: "",
+      address: "",
       distance: this.$store.state.radius,
       selected: "",
       open: this.$store.state.open
@@ -131,10 +132,10 @@ export default {
       var id = document.getElementById("provinces");
       this.selected = id.options[id.selectedIndex].value;
       this.$store.dispatch("changeProvince", this.selected);
+          this.$store.dispatch("getRestaurant", "food");
     },
     randomize() {
       var length;
-      this.$store.dispatch("getRestaurant", this.keyword);
       length = this.restaurant.length;
       length++;
       this.randomNum = Math.floor(Math.random() * length);
@@ -142,6 +143,7 @@ export default {
       this.ratings = this.restaurant[this.randomNum].rating;
       this.isOpen = this.restaurant[this.randomNum].opening_hours;
       this.noOfRatings = this.restaurant[this.randomNum].user_ratings_total;
+      this.address = this.restaurant[this.randomNum].vicinity
     },
     onDistanceChange(value) {
       this.distance = value;
@@ -152,6 +154,9 @@ export default {
     restaurant() {
       return this.$store.state.restaurant;
     }
+  },
+  created(){
+      this.$store.dispatch("getRestaurant", this.keyword)
   }
 };
 </script>
