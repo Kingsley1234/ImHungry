@@ -31,7 +31,13 @@
             </f7-nav-right>
           </f7-navbar>
           <f7-block>
-            <RestaurantCard :title="name" :rating="ratings" :isOpen="isOpen" :numberOfRating="noOfRatings" :address="address" />
+            <RestaurantCard
+              :title="name"
+              :rating="ratings"
+              :isOpen="isOpen"
+              :numberOfRating="noOfRatings"
+              :address="address"
+            />
           </f7-block>
         </f7-page>
       </f7-view>
@@ -83,6 +89,13 @@
               <f7-list>
                 <f7-list-item @change="openNow" checked checkbox title="Open now" name="Open now"></f7-list-item>
               </f7-list>
+              <f7-list>
+                <f7-list-item  @change="selectGenre" radio value="food" title="All" name="genre" checked></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Fish" title="Fish" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Pizza" title="Pizza" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Wings" title="Wings" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Coffee" title="Coffee" name="genre"></f7-list-item>
+              </f7-list>
             </f7-list>
           </f7-block>
         </f7-page>
@@ -106,6 +119,7 @@ export default {
       address: "",
       distance: this.$store.state.radius,
       selected: "",
+      selectedGenre: "",
       open: this.$store.state.open
     };
   },
@@ -113,26 +127,28 @@ export default {
     RestaurantCard
   },
   methods: {
-    openNow(e){
+    selectGenre(e){
       if(e.target.checked){
-        this.$store.dispatch('changeOpen').then( ()=> {
-          this.$store.dispatch("getRestaurant", "food");
-        }
-        )
+        this.keyword = e.target.value
+      this.$store.dispatch("getRestaurant", this.keyword);
       }
-      else{
-        this.$store.dispatch('changeOpen').then(()=> {
-          this.$store.dispatch("getRestaurant", "food");
-
-        })
-
+    },
+    openNow(e) {
+      if (e.target.checked) {
+        this.$store.dispatch("changeOpen").then(() => {
+          this.$store.dispatch("getRestaurant", this.keyword);
+        });
+      } else {
+        this.$store.dispatch("changeOpen").then(() => {
+          this.$store.dispatch("getRestaurant", this.keyword);
+        });
       }
     },
     checkProvinces() {
       var id = document.getElementById("provinces");
       this.selected = id.options[id.selectedIndex].value;
       this.$store.dispatch("changeProvince", this.selected);
-          this.$store.dispatch("getRestaurant", "food");
+      this.$store.dispatch("getRestaurant", this.keyword);
     },
     randomize() {
       var length;
@@ -143,8 +159,8 @@ export default {
       this.ratings = this.restaurant[this.randomNum].rating;
       this.isOpen = this.restaurant[this.randomNum].opening_hours;
       this.noOfRatings = this.restaurant[this.randomNum].user_ratings_total;
-      this.address = this.restaurant[this.randomNum].vicinity
-        this.$store.dispatch('currentCard', {
+      this.address = this.restaurant[this.randomNum].vicinity;
+      this.$store.dispatch("currentCard", {
         title: this.name,
         rating: this.ratings,
         image: this.image,
@@ -152,7 +168,7 @@ export default {
         numberOfRating: this.noOfRatings,
         address: this.address,
         isLiked: this.isLiked
-      })
+      });
     },
     onDistanceChange(value) {
       this.distance = value;
@@ -164,8 +180,8 @@ export default {
       return this.$store.state.restaurant;
     }
   },
-  created(){
-      this.$store.dispatch("getRestaurant", this.keyword)
+  created() {
+    this.$store.dispatch("getRestaurant", this.keyword);
   }
 };
 </script>
