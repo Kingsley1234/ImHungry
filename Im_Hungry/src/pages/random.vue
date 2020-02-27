@@ -91,10 +91,14 @@
               </f7-list>
               <f7-list>
                 <f7-list-item  @change="selectGenre" radio value="food" title="All" name="genre" checked></f7-list-item>
-                <f7-list-item @change="selectGenre" radio value="Fish" title="Fish" name="genre"></f7-list-item>
-                <f7-list-item @change="selectGenre" radio value="Pizza" title="Pizza" name="genre"></f7-list-item>
-                <f7-list-item @change="selectGenre" radio value="Wings" title="Wings" name="genre"></f7-list-item>
-                <f7-list-item @change="selectGenre" radio value="Coffee" title="Coffee" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Fast Food" title="Fast Food" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Italian" title="Italian" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="French" title="French" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Pub food" title="Pub food" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Grill" title="Grill" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Asian" title="Asian" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Lebanese" title="Lebanese" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="International" title="International" name="genre"></f7-list-item>
               </f7-list>
             </f7-list>
           </f7-block>
