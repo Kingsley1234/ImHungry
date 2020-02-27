@@ -96,9 +96,20 @@
                 <f7-list-item @change="selectGenre" radio value="French" title="French" name="genre"></f7-list-item>
                 <f7-list-item @change="selectGenre" radio value="Pub food" title="Pub food" name="genre"></f7-list-item>
                 <f7-list-item @change="selectGenre" radio value="Grill" title="Grill" name="genre"></f7-list-item>
-                <f7-list-item @change="selectGenre" radio value="Asian" title="Asian" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Nigerian" title="Nigerian" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Chinese" title="Chinese" name="genre"></f7-list-item>
                 <f7-list-item @change="selectGenre" radio value="Lebanese" title="Lebanese" name="genre"></f7-list-item>
                 <f7-list-item @change="selectGenre" radio value="International" title="International" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Canadian" title="Canadian" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Coffee" title="Coffee" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="European" title="European" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Breakfast" title="Breakfast" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Sandwich" title="Sandwich" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Vegetarian" title="Vegetarian" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Bar Food" title="Bar Food" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Desserts" title="Desserts" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Japanese" title="Japanese" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Thai" title="Thai" name="genre"></f7-list-item>
               </f7-list>
             </f7-list>
           </f7-block>
