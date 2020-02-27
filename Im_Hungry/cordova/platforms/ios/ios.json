@@ -10,7 +10,7 @@
           "CFBundleAllowMixedLocalizations": [
             {
               "xml": "<true />",
-              "count": 3
+              "count": 4
             }
           ]
         }
