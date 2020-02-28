@@ -94,7 +94,7 @@
                 <f7-list-item @change="selectGenre" radio value="Fast Food" title="Fast Food" name="genre"></f7-list-item>
                 <f7-list-item @change="selectGenre" radio value="Italian" title="Italian" name="genre"></f7-list-item>
                 <f7-list-item @change="selectGenre" radio value="French" title="French" name="genre"></f7-list-item>
-                <f7-list-item @change="selectGenre" radio value="Pub food" title="Pub food" name="genre"></f7-list-item>
+                <f7-list-item @change="selectGenre" radio value="Steak" title="Steak" name="genre"></f7-list-item>
                 <f7-list-item @change="selectGenre" radio value="Grill" title="Grill" name="genre"></f7-list-item>
                 <f7-list-item @change="selectGenre" radio value="Nigerian" title="Nigerian" name="genre"></f7-list-item>
                 <f7-list-item @change="selectGenre" radio value="Chinese" title="Chinese" name="genre"></f7-list-item>
