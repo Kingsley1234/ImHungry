@@ -50,6 +50,7 @@ export default {
       this.$store.dispatch('like')
       },
       removeFromFavourites(){
+        this.isLiked = false
       this.$store.dispatch('dislike', this.index)
        this.$f7.views.main.router.back();
 

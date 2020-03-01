@@ -98,7 +98,7 @@
 
               <!--Open Now-->
               <f7-list>
-                <f7-list-item @change="openNow" unchecked checkbox title="Open now" name="Open now"></f7-list-item>
+                <f7-list-item @change="openNow" checked checkbox title="Open now" name="Open now"></f7-list-item>
               </f7-list>
 
               <!--Show me:-->
