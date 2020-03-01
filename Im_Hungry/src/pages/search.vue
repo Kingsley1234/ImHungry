@@ -3,7 +3,7 @@
     <f7-searchbar
       custom-search
       :disable-button="!$theme.aurora"
-      placeholder="Feed thy self"
+      placeholder="Search"
       @input="keyword = $event.target.value"
       @keyup.native.enter="search()"
     ></f7-searchbar>

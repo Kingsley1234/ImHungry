@@ -12,14 +12,15 @@
     <p><b> {{address}}</b></p>
     <p class="rating">Rating: {{rating}}</p>
     <p class="numberRating">Number of Ratings: {{numberOfRating}}</p>
+    <p class="priceRange">Price Level: {{priceRange}}</p>
   </f7-card-content>
   <f7-card-footer>
-    <f7-link v-if="isLiked" @click="removeFromFavourites"
+    <f7-link v-if="isLiked" @click="removeFromFavourites" id="favStarFilled"
         icon-ios="f7:star_fill"
         icon-aurora="f7:star_fill"
         icon-md="f7:star_fill"
       ></f7-link>
-      <f7-link v-else @click="addToFavourites"
+      <f7-link v-else @click="addToFavourites" id="favStar"
         icon-ios="f7:star"
         icon-aurora="f7:star"
         icon-md="f7:star"
@@ -49,7 +50,7 @@ export default {
       this.$store.dispatch('like')
       },
       removeFromFavourites(){
-      this.$store.dispatch('dislike', this.index) 
+      this.$store.dispatch('dislike', this.index)
        this.$f7.views.main.router.back();
 
       }
@@ -89,8 +90,12 @@ export default {
         address: {
           type: String,
           default: ''
+        },
+        priceRange: {
+          type: Number,
+          default: ''
         }
-        
+
     }
 }
 </script>
@@ -108,5 +113,11 @@ export default {
   font-size: 16pt;
   font-weight: bold
 }
-</style>
+#favStar{
+  color: #FCDD0A
+}
+#favStarFilled{
+  color: #FCDD0A
+}
 
+</style>

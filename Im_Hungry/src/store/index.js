@@ -20,6 +20,7 @@ export default new Vuex.Store({
             image: "",
             numberOfRating: "",
             address: "",
+            priceRange: "",
             isLiked: false
         },
     },
@@ -81,6 +82,7 @@ export default new Vuex.Store({
             state.currentRestaurant.address = info.address
             state.currentRestaurant.image = url
             state.currentRestaurant.isLiked = info.isLiked
+            state.currentRestaurant.priceRange = info.priceRange
         },
         GET_LOCATION(state, location) {
             state.location = location
@@ -182,4 +184,4 @@ export default new Vuex.Store({
         }
 
     },
-})  
+})

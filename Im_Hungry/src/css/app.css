@@ -4,3 +4,11 @@
 }
 
 /* Your app custom styles here */
+
+.custom-theme {
+--f7-list-button-color: rgb(0, 255, 0);
+}
+
+#genreSelect{
+  /*color: rgb(255, 0, 0);*/
+}
