@@ -10,15 +10,16 @@
     <p v-else class="isNotOpen">Closed now</p>
     <p><b> {{address}}</b></p>
     <p class="rating">Rating: {{rating}}</p>
+    <p class="priceRange">Price Range: {{priceRange}}</p>
     <p class="numberRating">Number of Ratings: {{numberOfRating}}</p>
   </f7-card-content>
   <f7-card-footer>
     <f7-link @click="getPhoto" popup-open="#infoCard">View more info</f7-link>
   </f7-card-footer>
 </f7-card>
-  
+
   </div>
-  
+
 </template>
 
 <script>
@@ -35,6 +36,7 @@ export default {
       this.$store.dispatch('currentCard', {
         title: this.title,
         rating: this.rating,
+        priceRange: this.priceRange,
         image: this.image,
         isOpen: this.isOpen,
         numberOfRating: this.numberOfRating,
@@ -48,7 +50,7 @@ export default {
             type: String,
             default: ''
         },
-        
+
         rating: {
           type: String,
           default: ''
@@ -68,8 +70,13 @@ export default {
         address: {
           type: String,
           default: ''
+        },
+        priceRange: {
+          type: String,
+          default: 'Data not available'
         }
-        
+
+
     }
 }
 </script>
@@ -91,4 +98,3 @@ export default {
   color: #797575;
 }
 </style>
-

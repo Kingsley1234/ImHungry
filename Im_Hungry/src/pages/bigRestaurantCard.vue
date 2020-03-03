@@ -11,8 +11,8 @@
     <p v-else class="isNotOpen">Closed now</p>
     <p><b> {{address}}</b></p>
     <p class="rating">Rating: {{rating}}</p>
-    <p class="numberRating">Number of Ratings: {{numberOfRating}}</p>
     <p class="priceRange">Price Level: {{priceRange}}</p>
+    <p class="numberRating">Number of Ratings: {{numberOfRating}}</p>
   </f7-card-content>
   <f7-card-footer>
     <f7-link v-if="isLiked" @click="removeFromFavourites" id="favStarFilled"
@@ -93,8 +93,8 @@ export default {
           default: ''
         },
         priceRange: {
-          type: Number,
-          default: ''
+          type: String,
+          default: 'Data not available'
         }
 
     }
