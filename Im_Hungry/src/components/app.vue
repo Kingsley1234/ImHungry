@@ -7,7 +7,6 @@
       <f7-toolbar tabbar labels bottom>
         <f7-link
           tab-link="#view-search"
-          tab-link-active
           icon-ios="f7:search"
           icon-aurora="f7:search"
           icon-md="f7:search"
@@ -15,6 +14,7 @@
         ></f7-link>
         <f7-link
           tab-link="#view-random"
+          tab-link-active
           icon-ios="f7:arrow_2_circlepath_circle_fill"
           icon-aurora="f7:arrow_2_circlepath_circle_fill"
           icon-md="f7:arrow_2_circlepath_circle_fill"
