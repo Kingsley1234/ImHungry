@@ -13,6 +13,7 @@
         :rating="items.rating"
         :isOpen="items.opening_hours"
         :address="items.vicinity"
+        :priceRange="items.price_level"
         :numberOfRating="items.user_ratings_total"
       />
     </span>
@@ -28,6 +29,7 @@
             :isLiked="currentRestaurant.isLiked"
             :isOpen="currentRestaurant.isOpen"
             :rating="currentRestaurant.rating"
+            :priceRange="currentRestaurant.priceRange"
             :address="currentRestaurant.address"
             :numberOfRating="currentRestaurant.numberOfRating"
             :imageUrl="currentRestaurant.image"

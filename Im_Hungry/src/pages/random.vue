@@ -1,10 +1,9 @@
 <template>
   <f7-page class="custom-theme" name="Im Hungry">
-    <f7-navbar :sliding="false" large>
+    <f7-navbar :sliding="false" extra large>
       <f7-nav-left>
         <!-- <f7-link icon-ios="f7:menu" icon-aurora="f7:menu" icon-md="material:menu" panel-open="left"></f7-link> -->
       </f7-nav-left>
-      <f7-nav-title sliding>Im Hungry</f7-nav-title>
       <f7-nav-right>
         <f7-link
           icon-="f7:slider_horizontal_3"
@@ -13,9 +12,13 @@
           panel-open="right"
         ></f7-link>
       </f7-nav-right>
-      <f7-nav-title-large sliding>Im Hungry!</f7-nav-title-large>
     </f7-navbar>
-    <f7-block></f7-block>
+    <f7-block>
+    <div class="">
+      <p class="text-align-center">I'm Hungry</p>
+      <img data-src="https://scontent-yyz1-1.xx.fbcdn.net/v/t1.15752-9/88993927_990454484682450_6513718139501412352_n.png?_nc_cat=110&_nc_sid=b96e70&_nc_oc=AQk9ulLYxtYMJ2dWKnNsKzWiDCi6CRNQ8HjNZKiMh6366U-hIWaW4zAtpwiDU0hnYevMX_eo4jdK5iPZ7BosyFvo&_nc_ht=scontent-yyz1-1.xx&oh=c7e9008220556da084f6263270661149&oe=5E830CA7" align="middle" class="lazy logo-lazy">
+    </div>
+    </f7-block>
     <f7-block strong inset>
       <f7-block-title class=".f7-block"></f7-block-title>
       <f7-button fill @click="randomize" raised popup-open="#my-popup">Press Me!</f7-button>
@@ -136,7 +139,7 @@
 
 
 <script>
-import RestaurantCard from "./BigRestaurantCard";
+import RestaurantCard from "./bigRestaurantCard";
 export default {
   data() {
     return {
@@ -218,3 +221,11 @@ export default {
   }
 };
 </script>
+<style>
+.logo-lazy{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+</style>

@@ -9,6 +9,7 @@
           :isLiked="items.isLiked"
           :title="items.name"
           :rating="items.rating"
+          :priceRange="items.priceRange"
           :isOpen="items.isOpen"
           :address="items.address"
           :numberOfRating="items.numberOfRating"
@@ -31,7 +32,7 @@ export default {
   computed: {
     favourites() {
       return this.$store.state.fav;
-      
+
     }
   },
 //  methods: {
