@@ -65,6 +65,10 @@ export default {
           type: Number,
           default: ''
         },
+        isLiked: {
+          type: Boolean,
+          default: ''
+        },
         imageUrl: {
           type: String,
           default: 'https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'

@@ -1,6 +1,6 @@
 <template>
   <f7-page class="custom-theme" name="Im Hungry">
-    <f7-navbar :sliding="false" extra large>
+    <f7-navbar :sliding="false">
       <f7-nav-left>
         <!-- <f7-link icon-ios="f7:menu" icon-aurora="f7:menu" icon-md="material:menu" panel-open="left"></f7-link> -->
       </f7-nav-left>
@@ -14,34 +14,77 @@
       </f7-nav-right>
     </f7-navbar>
     <f7-block>
-    <div class="">
-      <p class="text-align-center">I'm Hungry</p>
-      <img data-src="https://scontent-yyz1-1.xx.fbcdn.net/v/t1.15752-9/88993927_990454484682450_6513718139501412352_n.png?_nc_cat=110&_nc_sid=b96e70&_nc_oc=AQk9ulLYxtYMJ2dWKnNsKzWiDCi6CRNQ8HjNZKiMh6366U-hIWaW4zAtpwiDU0hnYevMX_eo4jdK5iPZ7BosyFvo&_nc_ht=scontent-yyz1-1.xx&oh=c7e9008220556da084f6263270661149&oe=5E830CA7" align="middle" class="lazy logo-lazy">
-    </div>
+      <div class>
+        <img
+          data-src="https://scontent-yyz1-1.xx.fbcdn.net/v/t1.15752-9/88993927_990454484682450_6513718139501412352_n.png?_nc_cat=110&_nc_sid=b96e70&_nc_oc=AQk9ulLYxtYMJ2dWKnNsKzWiDCi6CRNQ8HjNZKiMh6366U-hIWaW4zAtpwiDU0hnYevMX_eo4jdK5iPZ7BosyFvo&_nc_ht=scontent-yyz1-1.xx&oh=c7e9008220556da084f6263270661149&oe=5E830CA7"
+          align="middle"
+          class="lazy logo-lazy"
+        />
+      </div>
     </f7-block>
-    <f7-block strong inset>
+    <f7-block inset>
       <f7-block-title class=".f7-block"></f7-block-title>
-      <f7-button fill @click="randomize" raised popup-open="#my-popup">Press Me!</f7-button>
-    </f7-block>
 
+      <f7-button round fill @click="randomize">Press Me!</f7-button>
+    </f7-block>
+    <f7-block align="middle">
+      <div v-if="random" class="loadingio-spinner-wedges-cq9io0l9d1w">
+        <div class="ldio-0mpcmwxpqf6n">
+          <div>
+            <div>
+              <div></div>
+            </div>
+            <div>
+              <div></div>
+            </div>
+            <div>
+              <div></div>
+            </div>
+            <div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-else class="loadingio-spinner-wedges-frjxjngf7rn">
+        <div class="ldio-8t4lac7l5q8">
+          <div>
+            <div>
+              <div></div>
+            </div>
+            <div>
+              <div></div>
+            </div>
+            <div>
+              <div></div>
+            </div>
+            <div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </f7-block>
     <!-- Popup -->
     <f7-popup id="my-popup">
       <f7-view>
         <f7-page>
           <f7-navbar :title="name">
             <f7-nav-right>
-              <f7-link popup-close>Close</f7-link>
+              <f7-link popup-close @click="random = false">Close</f7-link>
             </f7-nav-right>
           </f7-navbar>
           <f7-block>
             <!-- <transition name="router-anim" enter-active-class="animated bounceInDown"> -->
-              <RestaurantCard
-                :title="name"
-                :rating="ratings"
-                :isOpen="isOpen"
-                :numberOfRating="noOfRatings"
-                :address="address"
-              />
+            <RestaurantCard
+              :title="name"
+              :rating="ratings"
+              :isOpen="isOpen"
+              :numberOfRating="noOfRatings"
+              :address="address"
+              :priceRange="priceRange"
+              :isLiked="isLiked"
+            />
             <!-- </transition> -->
           </f7-block>
         </f7-page>
@@ -254,7 +297,9 @@ export default {
       selected: "",
       selectedGenre: "",
       open: this.$store.state.open,
-      priceRange: ""
+      priceRange: "",
+      random: false,
+      isLiked: this.$store.state.currentRestaurant.isLiked
     };
   },
   components: {
@@ -285,6 +330,11 @@ export default {
       this.$store.dispatch("getRestaurant", this.keyword);
     },
     randomize() {
+      this.random = true;
+      setTimeout(() => {
+        this.$f7.popup.open("#my-popup");
+      }, 1500);
+
       var length;
       length = this.restaurant.length;
       length++;
@@ -303,7 +353,6 @@ export default {
         numberOfRating: this.noOfRatings,
         priceRange: this.priceRange,
         address: this.address,
-        isLiked: this.isLiked
       });
     },
     onDistanceChange(value) {
@@ -321,11 +370,150 @@ export default {
   }
 };
 </script>
-<style>
-.logo-lazy{
+
+
+
+<style type="text/css">
+@keyframes ldio-0mpcmwxpqf6n {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.ldio-0mpcmwxpqf6n > div > div {
+  transform-origin: 150.5px 150.5px;
+  animation: ldio-0mpcmwxpqf6n 2.380952380952381s linear infinite;
+  opacity: 0.78;
+}
+.logo-lazy {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
 }
+.ldio-0mpcmwxpqf6n > div > div > div {
+  position: absolute;
+  left: 48.16px;
+  top: 48.16px;
+  width: 102.33999999999999px;
+  height: 102.33999999999999px;
+  border-radius: 102.33999999999999px 0 0 0;
+  transform-origin: 150.5px 150.5px;
+}
+.ldio-0mpcmwxpqf6n > div div:nth-child(1) {
+  animation-duration: 0.5952380952380952s;
+}
+.ldio-0mpcmwxpqf6n > div div:nth-child(1) > div {
+  background: #e15b64;
+  transform: rotate(0deg);
+}
+.ldio-0mpcmwxpqf6n > div div:nth-child(2) {
+  animation-duration: 0.7936507936507936s;
+}
+.ldio-0mpcmwxpqf6n > div div:nth-child(2) > div {
+  background: #f47e60;
+  transform: rotate(0deg);
+}
+.ldio-0mpcmwxpqf6n > div div:nth-child(3) {
+  animation-duration: 1.1904761904761905s;
+}
+.ldio-0mpcmwxpqf6n > div div:nth-child(3) > div {
+  background: #f8b26a;
+  transform: rotate(0deg);
+}
+.ldio-0mpcmwxpqf6n > div div:nth-child(4) {
+  animation-duration: 2.380952380952381s;
+}
+.ldio-0mpcmwxpqf6n > div div:nth-child(4) > div {
+  background: #abbd81;
+  transform: rotate(0deg);
+}
+.loadingio-spinner-wedges-cq9io0l9d1w {
+  width: 301px;
+  height: 301px;
+  display: inline-block;
+  overflow: hidden;
+}
+.ldio-0mpcmwxpqf6n {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.ldio-0mpcmwxpqf6n div {
+  box-sizing: content-box;
+}
+@keyframes ldio-8t4lac7l5q8 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.ldio-8t4lac7l5q8 > div > div {
+  transform-origin: 150.5px 150.5px;
+  animation: ldio-8t4lac7l5q8 16.666666666666664s linear infinite;
+  opacity: 0.78;
+}
+.ldio-8t4lac7l5q8 > div > div > div {
+  position: absolute;
+  left: 48.16px;
+  top: 48.16px;
+  width: 102.33999999999999px;
+  height: 102.33999999999999px;
+  border-radius: 102.33999999999999px 0 0 0;
+  transform-origin: 150.5px 150.5px;
+}
+.ldio-8t4lac7l5q8 > div div:nth-child(1) {
+  animation-duration: 4.166666666666666s;
+}
+.ldio-8t4lac7l5q8 > div div:nth-child(1) > div {
+  background: #e15b64;
+  transform: rotate(0deg);
+}
+.ldio-8t4lac7l5q8 > div div:nth-child(2) {
+  animation-duration: 5.5555555555555545s;
+}
+.ldio-8t4lac7l5q8 > div div:nth-child(2) > div {
+  background: #f47e60;
+  transform: rotate(0deg);
+}
+.ldio-8t4lac7l5q8 > div div:nth-child(3) {
+  animation-duration: 8.333333333333332s;
+}
+.ldio-8t4lac7l5q8 > div div:nth-child(3) > div {
+  background: #f8b26a;
+  transform: rotate(0deg);
+}
+.ldio-8t4lac7l5q8 > div div:nth-child(4) {
+  animation-duration: 16.666666666666664s;
+}
+.ldio-8t4lac7l5q8 > div div:nth-child(4) > div {
+  background: #abbd81;
+  transform: rotate(0deg);
+}
+.loadingio-spinner-wedges-frjxjngf7rn {
+  width: 301px;
+  height: 301px;
+  display: inline-block;
+  overflow: hidden;
+}
+.ldio-8t4lac7l5q8 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.ldio-8t4lac7l5q8 div {
+  box-sizing: content-box;
+}
+/* generated by https://loading.io/ */
+/* generated by https://loading.io/ */
 </style>

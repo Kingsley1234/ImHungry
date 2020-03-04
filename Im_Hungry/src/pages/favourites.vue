@@ -1,6 +1,8 @@
 <template>
   <f7-page name="favorites">
-        <f7-navbar title="Favourites"></f7-navbar>
+        <f7-navbar title="Favourites">
+      <f7-button round fill @click="refresh">hard refresh</f7-button>
+        </f7-navbar>
     <span v-for="(items, index) in favourites" :key="index">
       <span v-if="items.name">
         <RestaurantCard
@@ -35,6 +37,11 @@ export default {
 
     }
   },
+  methods: {
+    refresh(){
+      this.$store.dispatch("refresh");
+    }
+  }
 //  methods: {
 //    favourites(){
 //      this.favourite = this.$store.getters.favouritesArray

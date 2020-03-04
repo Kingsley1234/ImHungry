@@ -152,6 +152,10 @@ export default new Vuex.Store({
             state.restaurant = []
             state.open = !state.open
             localStorage.setItem('open', state.open)
+        },
+        REFRESH(state){
+            localStorage.removeItem('favourites')
+            state.fav = []
         }
     },
     actions: {
@@ -181,6 +185,9 @@ export default new Vuex.Store({
         },
         changeOpen({ commit }) {
             commit("CHANGE_OPEN")
+        },
+        refresh({commit}){
+            commit("REFRESH")
         }
 
     },
