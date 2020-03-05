@@ -4,7 +4,7 @@
 
     <f7-views tabs class="safe-areas">
       <!-- Tabbar for switching views-tabs -->
-      <f7-toolbar tabbar labels bottom>
+      <f7-toolbar tabbar labels bottom id="highlight">
         <f7-link
           tab-link="#view-search"
           icon-ios="f7:search"
@@ -71,6 +71,7 @@ export default {
         statusbar: {
           iosOverlaysWebView: true,
           androidOverlaysWebView: false
+
         }
       }
     };
@@ -111,3 +112,12 @@ export default {
   }
 };
 </script>
+<style>
+
+#highlight {
+  color: #c23838;
+}
+
+
+
+</style>

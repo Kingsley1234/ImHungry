@@ -15,6 +15,7 @@
         :address="items.vicinity"
         :priceRange="items.price_level"
         :numberOfRating="items.user_ratings_total"
+        :types="items.types[0]"
       />
     </span>
     <f7-popup id="infoCard">
@@ -32,7 +33,7 @@
             :priceRange="currentRestaurant.priceRange"
             :address="currentRestaurant.address"
             :numberOfRating="currentRestaurant.numberOfRating"
-            :imageUrl="currentRestaurant.image"
+            :types="currentRestaurant.types"
           />
           <f7-block></f7-block>
         </f7-page>

@@ -1,7 +1,7 @@
 <template>
   <f7-page name="favorites">
         <f7-navbar title="Favourites">
-      <f7-button round fill @click="refresh">hard refresh</f7-button>
+      <f7-button round fill @click="refresh" align="right">Rest Favourites</f7-button>
         </f7-navbar>
     <span v-for="(items, index) in favourites" :key="index">
       <span v-if="items.name">
@@ -15,6 +15,7 @@
           :isOpen="items.isOpen"
           :address="items.address"
           :numberOfRating="items.numberOfRating"
+          :types="items.types"
         />
       </span>
     </span>

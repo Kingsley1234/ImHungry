@@ -6,13 +6,20 @@
     valign="bottom"
   >{{title}}</f7-card-header>
   <f7-card-content>
-        <div v-if="showImage" class=""><img :src="imageUrl" width="300" height="300"/></div>
-    <p v-if="isOpen.open_now" class="isOpen">Open now</p>
-    <p v-else class="isNotOpen">Closed now</p>
+    <div v-if="showImage" class=""><img :src="imageUrl" width="100%" height="100"/></div>
+    <div class="container">
+    <div>
     <p><b> {{address}}</b></p>
     <p class="rating">Rating: {{rating}}</p>
-    <p class="priceRange">Price Level: {{priceRange}}</p>
     <p class="numberRating">Number of Ratings: {{numberOfRating}}</p>
+    <p class="priceRange">Price Level ($ - $$): {{priceRange}}</p>
+    <p class="types">Atmosphere: {{types}}</p>
+    </div>
+    <div>
+    <p v-if="isOpen.open_now" class="isOpen" align="right">Open now</p>
+    <p v-else class="isNotOpen">Closed now</p>
+    </div>
+    </div>
   </f7-card-content>
   <f7-card-footer>
     <f7-link v-if="isLiked" @click="removeFromFavourites" id="favStarFilled"
@@ -71,7 +78,7 @@ export default {
         },
         imageUrl: {
           type: String,
-          default: 'https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+          default: 'https://scontent-lga3-1.xx.fbcdn.net/v/t1.15752-9/89256656_485829695419061_4604469232124559360_n.png?_nc_cat=111&_nc_sid=b96e70&_nc_oc=AQmfn7TUhLJcaQU55zX-VH3UJ9m7UbgZizZI7sC7_8hrTJo277Wof-2qk4xnFuoeQB0&_nc_ht=scontent-lga3-1.xx&oh=121f86689b2cbea2361c22597b89de79&oe=5E94DAE7'
         },
         isLiked: {
           type: Boolean,
@@ -99,6 +106,10 @@ export default {
         priceRange: {
           type: String,
           default: 'Data not available'
+        },
+        types: {
+          type: [],
+          default: ''
         }
 
     }
@@ -123,6 +134,13 @@ export default {
 }
 #favStarFilled{
   color: #FCDD0A
+}
+.container {
+  display: table;
+  width: 100%;
+}
+.container div {
+  display: table-cell;
 }
 
 </style>

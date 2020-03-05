@@ -16,16 +16,14 @@
     <f7-block>
       <div class>
         <img
-          data-src="https://scontent-yyz1-1.xx.fbcdn.net/v/t1.15752-9/88993927_990454484682450_6513718139501412352_n.png?_nc_cat=110&_nc_sid=b96e70&_nc_oc=AQk9ulLYxtYMJ2dWKnNsKzWiDCi6CRNQ8HjNZKiMh6366U-hIWaW4zAtpwiDU0hnYevMX_eo4jdK5iPZ7BosyFvo&_nc_ht=scontent-yyz1-1.xx&oh=c7e9008220556da084f6263270661149&oe=5E830CA7"
+          data-src="https://scontent-lga3-1.xx.fbcdn.net/v/t1.15752-9/89159912_209148447132268_566488607041257472_n.png?_nc_cat=110&_nc_sid=b96e70&_nc_oc=AQkr8uiqf_YN36c0f0ljqrNuMzfbBVubMcWYM5Z-cIkVEL6Rfz8F-IrFZab6St-FK_Q&_nc_ht=scontent-lga3-1.xx&oh=48132ff164b2c377ebd9287a6c11cb1a&oe=5E8AB671"
           align="middle"
-          class="lazy logo-lazy"
-        />
+          class="lazy logo-lazy"/>
       </div>
     </f7-block>
     <f7-block inset>
       <f7-block-title class=".f7-block"></f7-block-title>
-
-      <f7-button round fill @click="randomize">Press Me!</f7-button>
+      <f7-button round fill @click="randomize">Can't Decide? Press Me! </f7-button>
     </f7-block>
     <f7-block align="middle">
       <div v-if="random" class="loadingio-spinner-wedges-cq9io0l9d1w">
@@ -84,6 +82,7 @@
               :address="address"
               :priceRange="priceRange"
               :isLiked="isLiked"
+              :types="types"
             />
             <!-- </transition> -->
           </f7-block>
@@ -299,7 +298,8 @@ export default {
       open: this.$store.state.open,
       priceRange: "",
       random: false,
-      isLiked: this.$store.state.currentRestaurant.isLiked
+      isLiked: this.$store.state.currentRestaurant.isLiked,
+      types: ""
     };
   },
   components: {
@@ -345,6 +345,7 @@ export default {
       this.noOfRatings = this.restaurant[this.randomNum].user_ratings_total;
       this.address = this.restaurant[this.randomNum].vicinity;
       this.priceRange = this.restaurant[this.randomNum].price_level;
+      this.types = this.restaurant[this.randomNum].types[0];
       this.$store.dispatch("currentCard", {
         title: this.name,
         rating: this.ratings,
@@ -353,6 +354,7 @@ export default {
         numberOfRating: this.noOfRatings,
         priceRange: this.priceRange,
         address: this.address,
+        types: this.types,
       });
     },
     onDistanceChange(value) {
@@ -406,28 +408,28 @@ export default {
   animation-duration: 0.5952380952380952s;
 }
 .ldio-0mpcmwxpqf6n > div div:nth-child(1) > div {
-  background: #e15b64;
+  background: #c23838;
   transform: rotate(0deg);
 }
 .ldio-0mpcmwxpqf6n > div div:nth-child(2) {
   animation-duration: 0.7936507936507936s;
 }
 .ldio-0mpcmwxpqf6n > div div:nth-child(2) > div {
-  background: #f47e60;
+  background: #ce6260;
   transform: rotate(0deg);
 }
 .ldio-0mpcmwxpqf6n > div div:nth-child(3) {
   animation-duration: 1.1904761904761905s;
 }
 .ldio-0mpcmwxpqf6n > div div:nth-child(3) > div {
-  background: #f8b26a;
+  background: #c23838;
   transform: rotate(0deg);
 }
 .ldio-0mpcmwxpqf6n > div div:nth-child(4) {
   animation-duration: 2.380952380952381s;
 }
 .ldio-0mpcmwxpqf6n > div div:nth-child(4) > div {
-  background: #abbd81;
+  background: #ce6260;
   transform: rotate(0deg);
 }
 .loadingio-spinner-wedges-cq9io0l9d1w {
@@ -473,28 +475,28 @@ export default {
   animation-duration: 4.166666666666666s;
 }
 .ldio-8t4lac7l5q8 > div div:nth-child(1) > div {
-  background: #e15b64;
+  background: #c23838;
   transform: rotate(0deg);
 }
 .ldio-8t4lac7l5q8 > div div:nth-child(2) {
   animation-duration: 5.5555555555555545s;
 }
 .ldio-8t4lac7l5q8 > div div:nth-child(2) > div {
-  background: #f47e60;
+  background: #ce6260;
   transform: rotate(0deg);
 }
 .ldio-8t4lac7l5q8 > div div:nth-child(3) {
   animation-duration: 8.333333333333332s;
 }
 .ldio-8t4lac7l5q8 > div div:nth-child(3) > div {
-  background: #f8b26a;
+  background: #c23838;
   transform: rotate(0deg);
 }
 .ldio-8t4lac7l5q8 > div div:nth-child(4) {
   animation-duration: 16.666666666666664s;
 }
 .ldio-8t4lac7l5q8 > div div:nth-child(4) > div {
-  background: #abbd81;
+  background: #ce6260;
   transform: rotate(0deg);
 }
 .loadingio-spinner-wedges-frjxjngf7rn {

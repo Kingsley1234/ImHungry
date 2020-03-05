@@ -21,7 +21,8 @@ export default new Vuex.Store({
             numberOfRating: "",
             address: "",
             priceRange: "",
-            isLiked: false
+            isLiked: false,
+            types: ""
         },
     },
     getters: {
@@ -63,7 +64,7 @@ export default new Vuex.Store({
         },
         GET_PHOTO(state, keyword) {
             // var url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400" + "&photoreference=" + reference + "=&key=AIzaSyCcZ-5hQ41xZ3SyZYBeZWERrGVHKgvkzS0"
-            var url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?" + "input=" + keyword + "&inputtype=textquery&fields=photos,formatted_address,name,rating,price_level,opening_hours,geometry&key=AIzaSyCcZ-5hQ41xZ3SyZYBeZWERrGVHKgvkzS0"
+            var url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?" + "input=" + keyword + "&inputtype=textquery&fields=photos,formatted_address,name,rating,price_level,opening_hours,geometry,types&key=AIzaSyCcZ-5hQ41xZ3SyZYBeZWERrGVHKgvkzS0"
             const proxyurl = "https://cors-anywhere.herokuapp.com/";
             axios.get(proxyurl + url).then(res => {
                 console.log(res.data.candidates)
@@ -83,6 +84,7 @@ export default new Vuex.Store({
             state.currentRestaurant.image = url
             state.currentRestaurant.isLiked = info.isLiked
             state.currentRestaurant.priceRange = info.priceRange
+            state.currentRestaurant.types = info.types
         },
         GET_LOCATION(state, location) {
             state.location = location
