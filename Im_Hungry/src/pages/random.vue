@@ -13,6 +13,7 @@
         ></f7-link>
       </f7-nav-right>
     </f7-navbar>
+
     <f7-block>
       <div class>
         <img
@@ -21,10 +22,7 @@
           class="lazy logo-lazy"/>
       </div>
     </f7-block>
-    <f7-block inset>
-      <f7-block-title class=".f7-block"></f7-block-title>
-      <f7-button round fill @click="randomize">Can't Decide? Press Me! </f7-button>
-    </f7-block>
+
     <f7-block align="middle">
       <div v-if="random" class="loadingio-spinner-wedges-cq9io0l9d1w">
         <div class="ldio-0mpcmwxpqf6n">
@@ -63,6 +61,12 @@
         </div>
       </div>
     </f7-block>
+
+    <f7-block inset>
+      <f7-block-title class=".f7-block"></f7-block-title>
+      <f7-button round fill @click="randomize">Can't Decide? Press Me! </f7-button>
+    </f7-block>
+
     <!-- Popup -->
     <f7-popup id="my-popup">
       <f7-view>
@@ -89,6 +93,7 @@
         </f7-page>
       </f7-view>
     </f7-popup>
+
     <f7-panel right reveal custom-theme>
       <f7-view>
         <f7-page>
@@ -153,123 +158,157 @@
                   value="food"
                   title="All"
                   name="genre"
-                  checked
-                ></f7-list-item>
-                <f7-list-item
-                  @change="selectGenre"
-                  radio
-                  value="Fast Food"
-                  title="Fast Food"
-                  name="genre"
-                ></f7-list-item>
-                <f7-list-item
-                  @change="selectGenre"
-                  radio
-                  value="Italian"
-                  title="Italian"
-                  name="genre"
-                ></f7-list-item>
-                <f7-list-item
-                  @change="selectGenre"
-                  radio
-                  value="French"
-                  title="French"
-                  name="genre"
-                ></f7-list-item>
-                <f7-list-item @change="selectGenre" radio value="Steak" title="Steak" name="genre"></f7-list-item>
-                <f7-list-item @change="selectGenre" radio value="Grill" title="Grill" name="genre"></f7-list-item>
-                <f7-list-item
-                  @change="selectGenre"
-                  radio
-                  value="Nigerian"
-                  title="Nigerian"
-                  name="genre"
-                ></f7-list-item>
-                <f7-list-item
-                  @change="selectGenre"
-                  radio
-                  value="Chinese"
-                  title="Chinese"
-                  name="genre"
-                ></f7-list-item>
-                <f7-list-item
-                  @change="selectGenre"
-                  radio
-                  value="Lebanese"
-                  title="Lebanese"
-                  name="genre"
-                ></f7-list-item>
-                <f7-list-item
-                  @change="selectGenre"
-                  radio
-                  value="International"
-                  title="International"
-                  name="genre"
-                ></f7-list-item>
-                <f7-list-item
-                  @change="selectGenre"
-                  radio
-                  value="Canadian"
-                  title="Canadian"
-                  name="genre"
-                ></f7-list-item>
-                <f7-list-item
-                  @change="selectGenre"
-                  radio
-                  value="Coffee"
-                  title="Coffee"
-                  name="genre"
-                ></f7-list-item>
-                <f7-list-item
-                  @change="selectGenre"
-                  radio
-                  value="European"
-                  title="European"
-                  name="genre"
-                ></f7-list-item>
-                <f7-list-item
-                  @change="selectGenre"
-                  radio
-                  value="Breakfast"
-                  title="Breakfast"
-                  name="genre"
-                ></f7-list-item>
-                <f7-list-item
-                  @change="selectGenre"
-                  radio
-                  value="Sandwich"
-                  title="Sandwich"
-                  name="genre"
-                ></f7-list-item>
-                <f7-list-item
-                  @change="selectGenre"
-                  radio
-                  value="Vegetarian"
-                  title="Vegetarian"
-                  name="genre"
-                ></f7-list-item>
+                  checked>
+                </f7-list-item>
+
                 <f7-list-item
                   @change="selectGenre"
                   radio
                   value="Bar Food"
                   title="Bar Food"
-                  name="genre"
-                ></f7-list-item>
+                  name="genre">
+                </f7-list-item>
+
+                <f7-list-item
+                  @change="selectGenre"
+                  radio
+                  value="Breakfast"
+                  title="Breakfast"
+                  name="genre">
+                </f7-list-item>
+
+                <f7-list-item
+                  @change="selectGenre"
+                  radio
+                  value="Canadian"
+                  title="Canadian"
+                  name="genre">
+                </f7-list-item>
+
+                <f7-list-item
+                  @change="selectGenre"
+                  radio value="Chinese"
+                  title="Chinese"
+                  name="genre">
+                </f7-list-item>
+
+                <f7-list-item
+                  @change="selectGenre"
+                  radio value="Coffee"
+                  title="Coffee"
+                  name="genre">
+                </f7-list-item>
+
                 <f7-list-item
                   @change="selectGenre"
                   radio
                   value="Desserts"
                   title="Desserts"
-                  name="genre"
-                ></f7-list-item>
+                  name="genre">
+                </f7-list-item>
+
+                <f7-list-item
+                  @change="selectGenre"
+                  radio
+                  value="European"
+                  title="European"
+                  name="genre">
+                </f7-list-item>
+
+                <f7-list-item
+                  @change="selectGenre"
+                  radio
+                  value="Fast Food"
+                  title="Fast Food"
+                  name="genre">
+                </f7-list-item>
+
+                <f7-list-item
+                  @change="selectGenre"
+                  radio
+                  value="French"
+                  title="French"
+                  name="genre">
+                </f7-list-item>
+
+                <f7-list-item
+                  @change="selectGenre"
+                  radio
+                  value="Grill"
+                  title="Grill"
+                  name="genre">
+                </f7-list-item>
+
+                <f7-list-item
+                  @change="selectGenre"
+                  radio
+                  value="International"
+                  title="International"
+                  name="genre">
+                </f7-list-item>
+
+                <f7-list-item
+                  @change="selectGenre"
+                  radio
+                  value="Italian"
+                  title="Italian"
+                  name="genre">
+                </f7-list-item>
+
                 <f7-list-item
                   @change="selectGenre"
                   radio
                   value="Japanese"
                   title="Japanese"
-                  name="genre"
-                ></f7-list-item>
-                <f7-list-item @change="selectGenre" radio value="Thai" title="Thai" name="genre"></f7-list-item>
+                  name="genre">
+                </f7-list-item>
+
+                <f7-list-item
+                  @change="selectGenre"
+                  radio
+                  value="Lebanese"
+                  title="Lebanese"
+                  name="genre">
+                </f7-list-item>
+
+                <f7-list-item
+                  @change="selectGenre"
+                  radio
+                  value="Nigerian"
+                  title="Nigerian"
+                  name="genre">
+                </f7-list-item>
+
+                <f7-list-item
+                  @change="selectGenre"
+                  radio
+                  value="Sandwich"
+                  title="Sandwich"
+                  name="genre">
+                </f7-list-item>
+
+                <f7-list-item
+                  @change="selectGenre"
+                  radio
+                  value="Steak"
+                  title="Steak"
+                  name="genre">
+                </f7-list-item>
+
+                <f7-list-item
+                  @change="selectGenre"
+                  radio
+                  value="Thai"
+                  title="Thai"
+                  name="genre">
+                </f7-list-item>
+
+                <f7-list-item
+                  @change="selectGenre"
+                  radio value="Vegetarian"
+                  title="Vegetarian"
+                  name="genre">
+                </f7-list-item>
               </f7-list>
             </f7-list>
           </f7-block>
@@ -278,7 +317,6 @@
     </f7-panel>
   </f7-page>
 </template>
-
 
 <script>
 import RestaurantCard from "./bigRestaurantCard";
