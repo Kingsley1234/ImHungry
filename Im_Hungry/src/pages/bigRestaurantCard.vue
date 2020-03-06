@@ -1,6 +1,6 @@
 <template>
   <div>
-   <f7-card class="card">
+   <f7-card class="header">
   <f7-card-header
     class="title"
     valign="bottom"
@@ -21,13 +21,13 @@
     </div>
     </div>
   </f7-card-content>
-  <f7-card-footer>
-    <f7-link v-if="isLiked" @click="removeFromFavourites" id="favStarFilled"
+  <f7-card-footer class="footer">
+    <f7-link v-if="isLiked" @click="removeFromFavourites" id="favStar"
         icon-ios="f7:star_fill"
         icon-aurora="f7:star_fill"
         icon-md="f7:star_fill"
       ></f7-link>
-      <f7-link v-else @click="addToFavourites" id="favStar"
+      <f7-link v-else @click="addToFavourites" id="favStarFilled"
         icon-ios="f7:star"
         icon-aurora="f7:star"
         icon-md="f7:star"
@@ -142,5 +142,9 @@ export default {
 .container div {
   display: table-cell;
 }
+.footer{
+  background: #f1f1f1;
+}
+
 
 </style>

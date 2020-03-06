@@ -1,6 +1,6 @@
 <template>
   <div>
-   <f7-card class="footer">
+   <f7-card class="header">
   <f7-card-header
     class="title"
     align="right"
@@ -14,11 +14,11 @@
     </div>
     <div>
     <p v-if="isOpen.open_now" class="isOpen" align="right">Open now</p>
-    <p v-else class="isNotOpen">Closed now</p>
+    <p v-else class="isNotOpen" align="right">Closed now</p>
     </div>
     </div>
   </f7-card-content>
-  <f7-card-footer class="notfooter">
+  <f7-card-footer class="footer">
     <f7-link @click="getPhoto" popup-open="#infoCard">View more info</f7-link>
   </f7-card-footer>
 </f7-card>
@@ -105,7 +105,7 @@ export default {
 .title {
   font-size: 16pt;
   font-weight: bold;
-  //background: #f1f1f1;
+  background: #f1f1f1;
 }
 
 .container {
@@ -115,8 +115,12 @@ export default {
 .container div {
   display: table-cell;
 }
-.footer {
+.header {
   border-style: solid;
-  border-color: rgba(194, 56, 56, 0.4);
+  border-color: rgba(194, 56, 56, 0.3);
+  border-width: 2px;
+}
+.footer {
+  background: #f1f1f1;
 }
 </style>

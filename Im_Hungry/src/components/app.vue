@@ -4,7 +4,7 @@
 
     <f7-views tabs class="safe-areas">
       <!-- Tabbar for switching views-tabs -->
-      <f7-toolbar tabbar labels bottom id="highlight">
+      <f7-toolbar tabbar labels bottom id="highlight" class="custom-theme">
         <f7-link
           tab-link="#view-search"
           icon-ios="f7:search"

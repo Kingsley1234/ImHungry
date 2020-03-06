@@ -1,8 +1,16 @@
 <template>
-  <f7-page name="favorites">
-        <f7-navbar title="Favourites">
-      <f7-button round fill @click="refresh" align="right">Rest Favourites</f7-button>
-        </f7-navbar>
+  <f7-page class="custom-theme" name="favorites">
+  <f7-navbar>
+    <f7-nav-left>
+        <p class="navtitle">Favourites</p>
+    </f7-nav-left>
+    <f7-nav-right>
+      <div class="buttonstyle">
+        <f7-button round fill color="black" @click="refresh" align="right">Reset Favourites</f7-button>
+      </div>
+    </f7-nav-right>
+    </f7-navbar>
+
     <span v-for="(items, index) in favourites" :key="index">
       <span v-if="items.name">
         <RestaurantCard
@@ -53,3 +61,21 @@ export default {
 //   }
 };
 </script>
+<style>
+.navtitle{
+  font-size: 18pt;
+  font-weight: bold;
+  padding-left: 4px;
+
+}
+.buttonstyle{
+   padding-right: 10px;
+}
+.container {
+  display: table;
+  width: 100%;
+}
+.container div {
+  display: table-cell;
+}
+</style>
